@@ -2,6 +2,7 @@ package me.simondumalski.brokentools.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -53,6 +54,7 @@ public class PlayerInteractListener implements Listener {
 
             if (currentDamage == maxDurability - 1) {
                 e.setCancelled(true);
+                player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
                 player.sendMessage(ChatColor.RED + "This item is broken! Repair it before using it again.");
             }
 
