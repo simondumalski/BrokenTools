@@ -1,0 +1,7 @@
+name: BrokenTools
+version: '${project.version}'
+main: me.simondumalski.brokentools.Main
+api-version: 1.16
+prefix: BrokenTools
+authors: [ Saymoan ]
+description: Tools no longer break and instead must be repaired!
