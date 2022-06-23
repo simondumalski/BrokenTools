@@ -1,20 +1,23 @@
 package me.simondumalski.brokentools;
 
-import me.simondumalski.brokentools.listeners.BlockBreakListener;
-import me.simondumalski.brokentools.listeners.ItemDamageListener;
-import me.simondumalski.brokentools.listeners.PlayerDamageListener;
-import me.simondumalski.brokentools.listeners.PlayerInteractListener;
+import me.simondumalski.brokentools.listeners.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
 
+    private static Main instance;
     @Override
     public void onEnable() {
 
+        //Initialize the instance variable
+        instance = this;
+
+        //Register the event listeners
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerInteractListener(), this);
-        getServer().getPluginManager().registerEvents(new PlayerDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new EntityDamageEntityListener(), this);
+        getServer().getPluginManager().registerEvents(new EntityDamageListener(), this);
         getServer().getPluginManager().registerEvents(new ItemDamageListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteractListener(), this);
 
     }
 
@@ -23,6 +26,14 @@ public final class Main extends JavaPlugin {
 
 
 
+    }
+
+    /**
+     * Returns the instance of the main plugin class
+     * @return Main plugin class
+     */
+    public static Main getInstance() {
+        return instance;
     }
 
 }

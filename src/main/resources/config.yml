@@ -1,0 +1,3 @@
+messages:
+  tool-break: '&cYour &e&o%item%&r &cis broken! Repair it before using it again.'
+  armor-break: '&cYour &e&o%item%&r &cfell off because it''s broken! Repair it before wearing it again.'

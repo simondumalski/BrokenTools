@@ -1,5 +1,7 @@
 package me.simondumalski.brokentools.listeners;
 
+import me.simondumalski.brokentools.managers.MessageManager;
+import me.simondumalski.brokentools.utils.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -43,7 +45,7 @@ public class BlockBreakListener implements Listener {
             if (currentDamage == maxDurability - 1) {
                 e.setCancelled(true);
                 player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
-                player.sendMessage(ChatColor.RED + "This item is broken! Repair it before using it again.");
+                MessageManager.message(player, Message.TOOL_BREAK, new String[]{MessageManager.beautifyMaterialName(item.getType().name())});
             }
 
         }

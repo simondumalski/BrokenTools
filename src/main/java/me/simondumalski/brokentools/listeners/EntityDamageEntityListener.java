@@ -1,5 +1,7 @@
 package me.simondumalski.brokentools.listeners;
 
+import me.simondumalski.brokentools.managers.MessageManager;
+import me.simondumalski.brokentools.utils.Message;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -14,10 +16,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PlayerDamageListener implements Listener {
+public class EntityDamageEntityListener implements Listener {
 
     @EventHandler
-    public void onPlayerDamage(EntityDamageByEntityEvent e) {
+    public void onEntityDamageEntity(EntityDamageByEntityEvent e) {
 
         //Get the attacker entity
         Entity attacker = e.getDamager();
@@ -45,7 +47,7 @@ public class PlayerDamageListener implements Listener {
                     int damage = ThreadLocalRandom.current().nextInt(0, 2);
                     e.setDamage(damage);
                     player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
-                    player.sendMessage(ChatColor.RED + "This item is broken! Repair it before using it again.");
+                    MessageManager.message(player, Message.TOOL_BREAK, new String[]{MessageManager.beautifyMaterialName(item.getType().name())});
                 }
 
             }
